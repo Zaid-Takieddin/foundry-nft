@@ -8,7 +8,7 @@ contract DeployBasicNft is Script {
     function run() public returns (BasicNft) {
         vm.startBroadcast();
         BasicNft basicNft = new BasicNft();
-        vm.startBroadcast();
+        vm.stopBroadcast();
         return basicNft;
     }
 }
