@@ -20,19 +20,13 @@ contract BasicNftTest is Test {
     function testNameIsCorrect() public view {
         string memory expectedName = "Dogie";
         string memory actualName = basicNft.name();
-        assert(
-            keccak256(abi.encodePacked(expectedName)) ==
-                keccak256(abi.encodePacked(actualName))
-        );
+        assert(keccak256(abi.encodePacked(expectedName)) == keccak256(abi.encodePacked(actualName)));
     }
 
     function testCanMintAndHaveBalance() public {
         vm.prank(USER);
         basicNft.mint(PUG);
         assert(basicNft.balanceOf(USER) == 1);
-        assert(
-            keccak256(abi.encodePacked(PUG)) ==
-                keccak256(abi.encodePacked(basicNft.tokenURI(0)))
-        );
+        assert(keccak256(abi.encodePacked(PUG)) == keccak256(abi.encodePacked(basicNft.tokenURI(0))));
     }
 }
