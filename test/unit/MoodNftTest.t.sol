@@ -21,4 +21,15 @@ contract NftTest is Test {
         moodNft.mintNft();
         console.log(moodNft.tokenURI(0));
     }
+
+    function testFlipMoodIntegration() public {
+        vm.prank(USER);
+        moodNft.mintNft();
+        vm.prank(USER);
+        moodNft.flipMood(0);
+        assert(
+            keccak256(abi.encodePacked(moodNft.tokenURI(0))) ==
+                keccak256(abi.encodePacked(SAD_SVG_URI))
+        );
+    }
 }
